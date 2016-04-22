@@ -6,23 +6,40 @@
 
 #include <iostream>
 #include <math.h>
-
-bool isPrime(int number) {
-	if (number % 2 == 0) {
-		return false;
-	}
-
-	for (int i = 3; i < (int)sqrt(number); i+=2) {
-		if (number % i == 0) {
-			return false;
-		}
-	}
-	return true;
-}
+#include <stdint.h>
 
 int main() {
 
-	std::cout << isPrime(101) << std::endl;;
+	int64_t number = 600851475143;
+	int64_t lastFactor;
+
+	if (number % 2 == 0) {
+		lastFactor = 2;
+		while (number % 2 == 0) {
+			number = number / 2;
+		}
+	} else {
+		lastFactor = 1;
+	}
+	
+	int64_t maxFactor = (int64_t) sqrt(number);
+	
+	for (int64_t factor = 3; factor <= maxFactor; factor = factor + 2) {
+		if (number % factor == 0) {
+			number = number / factor;
+			lastFactor = factor;
+			while (number % factor == 0) {
+				number = number / factor;
+			}
+			maxFactor = (int64_t) sqrt(number);
+		}
+	}
+	
+	if (number == 1) {
+		std::cout << lastFactor << std::endl;
+	} else {
+		std::cout << number << std::endl;
+	}
 
 	return 0;
 }
