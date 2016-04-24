@@ -24,8 +24,23 @@ bool isPalindrome(int number) {
 
 int main() {
 
-	std::cout << reverse(12321) << std::endl;
-	std::cout << isPalindrome(12321) << std::endl;
+	int largestPalindrome = 0;
+	int a = 999;
+	while (a >= 100) {
+		int b = 999;
+		while (b >= a) {
+			if (a * b <= largestPalindrome) {
+				break;
+			}
+			if (isPalindrome(a * b) ) {
+				largestPalindrome = a * b;
+			}
+			b--;
+		}
+		a--;
+	}
+
+	std::cout << largestPalindrome << std::endl;
 
 	return 0;
 }
