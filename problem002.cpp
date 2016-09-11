@@ -10,14 +10,13 @@
 
 #include <iostream>
 
-int main() {
-
+int evenFibonacciSum(const int &exceedTerm) {
 	int sum = 0;
 	int term1 = 1;
 	int term2 = 2;
 	int temp;
 
-	while (term2 < 4000000) {
+	while (term2 < exceedTerm) {
 		if (term2 % 2 == 0) {
 			sum += term2;
 		}
@@ -25,8 +24,12 @@ int main() {
 		term2 = term2 + term1;
 		term1 = temp;
 	}
+	return sum;
+}
 
-	std::cout << sum << std::endl;
+int main() {
+
+	std::cout << evenFibonacciSum(4000000) << std::endl;
 
 	return 0;
 }
