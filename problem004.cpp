@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <vector>
+#include <math.h>
 
 int reverse(int number) {
 	int reversed = 0;
@@ -22,12 +23,14 @@ bool isPalindrome(int number) {
 	return number == reverse(number);
 }
 
-int main() {
-
+int largestPalindrome(const int &digits) {
 	int largestPalindrome = 0;
-	int a = 999;
-	while (a >= 100) {
-		int b = 999;
+	int upperBound = pow(10, digits) - 1;
+	int lowerBound = pow(10, digits - 1);
+
+	int a = upperBound;
+	while (a >= lowerBound) {
+		int b = upperBound;
 		while (b >= a) {
 			if (a * b <= largestPalindrome) {
 				break;
@@ -39,8 +42,11 @@ int main() {
 		}
 		a--;
 	}
+	return largestPalindrome;
+}
 
-	std::cout << largestPalindrome << std::endl;
+int main() {
 
+	std::cout << largestPalindrome(3) << std::endl;
 	return 0;
 }
