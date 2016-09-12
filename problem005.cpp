@@ -10,10 +10,10 @@
 #include <iostream>
 #include <math.h>
 
-int main() {
-
-	const int MAX_RANGE = 20;
-	int primeFactorsExponent[MAX_RANGE + 1] = {0};
+int evenlyDivisible(const int &MAX_RANGE) {
+	
+	int primeFactorsExponent[MAX_RANGE + 1]; // = {0};
+	memset (primeFactorsExponent, 0, (MAX_RANGE + 1) * sizeof(int) );
 	int numbers[MAX_RANGE];
 	for (int i = 0; i < MAX_RANGE; i++) {
 		numbers[i] = i + 1;
@@ -50,7 +50,13 @@ int main() {
 	for (int base = 0; base <= MAX_RANGE; base++) {
 		result = result * pow(base, primeFactorsExponent[base]);
 	}
-	std::cout << result << std::endl;
+	return result;
+}
+
+int main() {
+
+	const int range = 20;
+	std::cout << evenlyDivisible(range) << std::endl;
 
 	return 0;
 }
