@@ -16,18 +16,26 @@
 #include <iostream>
 #include <math.h>
 
-int main() {
-
-	const unsigned long int limit = 100;
+unsigned long int sumOfSquares(const int &limit) {
 	unsigned long int sumOfSquares = 0;
-	unsigned long int squareOfSum = 0;
-	
 	sumOfSquares = limit * (limit + 1) / 2;
 	sumOfSquares = pow(sumOfSquares, 2);
+	return sumOfSquares;
+}
 
+unsigned long int squareOfSum(const int &limit) {
+	unsigned long int squareOfSum = 0;
 	squareOfSum = (2 * limit + 1) * (limit + 1) * limit / 6;
+	return squareOfSum;
+}
 
-	std::cout << sumOfSquares - squareOfSum << std::endl;
+int main() {
+
+	const int limit = 100;
+	
+	//std::cout << sumOfSquares(limit) << std::endl;
+	//std::cout << squareOfSum(limit) << std::endl;
+	std::cout << sumOfSquares(limit) - squareOfSum(limit) << std::endl;
 
 	return 0;
 }
