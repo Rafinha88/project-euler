@@ -30,6 +30,26 @@
 
 #include <iostream>
 
+unsigned long int largestProductSerie(const int &adjacent, const std::string &bigNumber) {
+	unsigned long int product = 1;
+	unsigned long int greatest = 0;
+	
+	for (int j = 0; j < bigNumber.size() + 1 - adjacent; j++) {
+		product = 1;
+		for (int i = j; i < j + adjacent; i++) {
+			int number = (int) bigNumber[i] - '0';
+			product = product * number;
+		}
+
+		if (product > greatest) {
+			greatest = product;
+		}
+	}
+
+	return greatest;
+
+}
+
 int main() {
 
 	const int adjacent = 13;
@@ -55,22 +75,7 @@ int main() {
 							"05886116467109405077541002256983155200055935729725"
 							"71636269561882670428252483600823257530420752963450";
 
-	unsigned long int product = 1;
-	unsigned long int greatest = 0;
+	std::cout << largestProductSerie(adjacent, bigNumber) << std::endl;
 	
-	for (int j = 0; j < bigNumber.size() + 1 - adjacent; j++) {
-		product = 1;
-		for (int i = j; i < j + adjacent; i++) {
-			int number = (int) bigNumber[i] - '0';
-			product = product * number;
-		}
-
-		if (product > greatest) {
-			greatest = product;
-		}
-	}
-
-	std::cout << greatest <<std::endl;
-
 	return 0;
 }
