@@ -11,19 +11,24 @@
 
 #include <iostream>
 
-int main() {
-
-	const int sum = 1000;
-	
+int pythagoreanTriplet(const int &sum) {
 	for (int a = 1; a < sum / 3; a++) {
 		for (int b = a + 1; b < sum / 2; b++) {
 			int c = sum - a - b;
 			if ( a * a + b * b == c * c) {
 				// std::cout << a << " + " << b << " + " << c << " = " << a + b + c << std::endl;
-				std::cout << a * b * c << std::endl;
+				return a * b * c;
 			}
 		}
 	}
+	return 0;
+}
+
+int main() {
+
+	const int sum = 1000;
+
+	std::cout << pythagoreanTriplet(sum) << std::endl;
 	
 	return 0;
 }
