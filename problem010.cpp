@@ -8,14 +8,14 @@
 #include <iostream>
 #include <vector>
 
-int main() {
-
-	const long int limit = 2000000;
-	unsigned long int sum = 0;
+unsigned long int sumOfPrimes(const long int &limit) {
+	
 	std::vector<unsigned long int> primeNumbers;
 
 	unsigned long int number = 2;
 	primeNumbers.push_back(number);
+	
+	unsigned long int sum = 0;
 	sum = sum + 2;
 
 	number = 3;
@@ -35,7 +35,13 @@ int main() {
 		number = number + 2;
 	}
 
-	std::cout << sum << std::endl;
+	return sum;
+}
+
+int main() {
+
+	const long int limit = 2000000;
+	std::cout << sumOfPrimes(limit) << std::endl;
 
 	return 0;
 }
