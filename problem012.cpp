@@ -22,14 +22,13 @@
 #include <vector>
 #include <math.h>
 
-int main() {
-	
+unsigned long int triangularNumberDivisor(const int &divisors) {
+
 	unsigned int n = 1;
 	unsigned long int triangleNumber = n * (n + 1) / 2;
 
-
 	std::vector<unsigned int> factors;
-	while (factors.size() <= 250) {
+	while (factors.size() <= divisors / 2) {
 		factors.clear();
 		triangleNumber = n * (n + 1) / 2;
 
@@ -42,7 +41,13 @@ int main() {
 		n++;
 	}
 
-	std::cout << triangleNumber << std::endl;
+	return triangleNumber;
+}
+
+int main() {
+	
+	int divisors = 500;
+	std::cout << triangularNumberDivisor(divisors) << std::endl;
 
 	return 0;
 }
