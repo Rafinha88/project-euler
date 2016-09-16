@@ -16,14 +16,16 @@
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
-double factorial(double n) {
+double factorial(const double &n) {
 	double product = 1.0;
 	for (int i = n; i > 1; i--) {
 		product *= i;
 	}
 	return product;
+}
+
+double binomialCoefficient(const double &n, const double &k) {
+	return factorial(n) / (factorial(k) * factorial(n - k) );
 }
 
 int main() {
@@ -34,7 +36,9 @@ int main() {
 	//
 	// (40 20): 40! / (20! (40 - 20)!) = (40 * 39 * ... * 21) / 20! =
 
-	cout << setprecision(0) << fixed << factorial(40) / (factorial(20) * factorial(20)) << endl;
+	const double n = 40.0;
+	const double k = 20.0;
+	std::cout << std::setprecision(0) << std::fixed << binomialCoefficient(n, k) << std::endl;
 
 	return 0;
 }

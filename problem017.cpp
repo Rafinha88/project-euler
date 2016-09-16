@@ -28,7 +28,7 @@ static std::string tensFromTwentyToNinety[] = {
 		"twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
 	};
 
-std::string combineWords(int number) {
+std::string combineWords(const int &number) {
 	std::stringstream ss;
 	if (number % 100 > 9 && number % 100 < 20) {
 		ss << fromTenToNineteen[number % 100 - 10];
@@ -48,7 +48,7 @@ std::string combineWords(int number) {
 	return ss.str();
 }
 
-std::string countByHundreds(int number) {
+std::string countByHundreds(const int &number) {
 	std::stringstream ss;
 	int hundreds = number / 100;
 	if (hundreds != 0) {
@@ -61,14 +61,14 @@ std::string countByHundreds(int number) {
 	return ss.str();
 }
 
-std::string writeNumber(int number) {
+std::string writeNumber(const int &number) {
 	std::stringstream ss;
 	ss << countByHundreds(number);
 	ss << combineWords(number);
 	return ss.str();
 }
 
-int countLetters(std::string words) {
+int countLetters(const std::string &words) {
 	int letters = 0;
 	for (int i = 0; i < words.size(); i++) {
 		if (words[i] != ' ' && words[i] != '-') {
@@ -78,8 +78,7 @@ int countLetters(std::string words) {
 	return letters;
 }
 
-int main() {
-
+int countNumberLetter() {
 	int sum = 0;
 	for (int i = 1; i < 1000; i++) {
 		std::string number = writeNumber(i);
@@ -87,7 +86,11 @@ int main() {
 	}
 	sum += countLetters("one thousand");
 
-	std::cout << sum << std::endl;
+	return sum;
+}
 
+int main() {
+
+	std::cout << countNumberLetter() << std::endl;
 	return 0;
 }

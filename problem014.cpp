@@ -19,15 +19,12 @@
 
 #include <iostream>
 
-using namespace std;
-
-int main() {
-	
+unsigned long long int longestCollatzChain(const int &limit) {
 	unsigned long long int startingNumber;
 	unsigned long long int number;
 	int longestChain = 0;
 
-	for (int i = 1000000; i > 1; i--) {
+	for (int i = limit; i > 1; i--) {
 		int chain = 1;
 		number = i;
 		while (number != 1) {
@@ -45,7 +42,13 @@ int main() {
 		}
 	}
 
-	cout << startingNumber << endl;
+	return startingNumber;
+}
+
+int main() {
+	
+	const int limit = 1000000;
+	std::cout << longestCollatzChain(limit) << std::endl;
 
 	return 0;
 }

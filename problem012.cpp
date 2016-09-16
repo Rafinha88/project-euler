@@ -46,7 +46,7 @@ unsigned long int triangularNumberDivisor(const int &divisors) {
 
 int main() {
 	
-	int divisors = 500;
+	const int divisors = 500;
 	std::cout << triangularNumberDivisor(divisors) << std::endl;
 
 	return 0;

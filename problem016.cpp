@@ -10,18 +10,25 @@
 #include <sstream>
 #include <math.h>
 
-int main() {
-	
+unsigned long long int powerDigitSum(const double &base, const double &expoent) {
 	std::stringstream ss;
-	ss << std::setprecision(0) << std::fixed << pow(2.0, 1000.0);
+	ss << std::setprecision(0) << std::fixed << pow(base, expoent);
 	std::string number = ss.str();
 	
 	unsigned long long int sum = 0;
 	for(int i = 0; i < number.size(); i++) {
-		sum += (int) number[i] - '0';
+		sum += (int) number.at(i) - '0';
 	}
 
-	std::cout << sum << std::endl;
+	return sum;
+}
+
+int main() {
+
+	const double base = 2.0;
+	const double expoent = 1000.0;
+
+	std::cout << powerDigitSum(base, expoent) << std::endl;
 
 	return 0;
 }
